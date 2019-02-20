@@ -1,0 +1,80 @@
+body,
+html,
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(235, 235, 235);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-bar {
+  text-align: center;
+  width: 100%;
+  background-color: rgb(252, 252, 252);
+  border-bottom: 1px solid rgba(202, 202, 202, 0.801);
+}
+/* Color Palette */
+.color-palette {
+  margin: auto;
+  list-style-type: none;
+}
+
+.color-palette li {
+  width: 40px;
+  height: 40px;
+  margin: 30px 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.color-palette li:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 6px 2px rgba(202, 202, 202, 0.801);
+}
+
+.red {
+  background-color: red;
+}
+.orange {
+  background-color: orange;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.purple {
+  background-color: purple;
+}
+.black {
+  background-color: black;
+}
+
+/*  Color Grid */
+.color-grid {
+  padding: 18px 30px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  box-shadow: 0 3px 6px 2px rgba(202, 202, 202, 0.801);
+}
+.cell {
+  border: 0.4px dotted rgb(226, 226, 226);
+  display: block;
+  width: 20px;
+  height: 20px;
+}
