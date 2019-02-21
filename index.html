@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PixelArt</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrapper">
       <div class="tool-bar">
-        <button class="reset-btn">Reset</button>
-        <button class="clear-btn">Clear</button>
+        <div class="clear-buttons">
+          <button class="reset-btn btn ">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+          <button class="clear-btn btn">
+            <i class="fas fa-eraser"></i>
+          </button>
+        </div>
+
         <ul class="color-palette">
           <li class="red"></li>
           <li class="orange"></li>
@@ -20,6 +33,7 @@
           <li class="blue"></li>
           <li class="purple"></li>
           <li class="black"></li>
+          <li class="brown"></li>
         </ul>
       </div>
 

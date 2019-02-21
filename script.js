@@ -5,7 +5,8 @@ const colorClasses = [
   "green",
   "blue",
   "purple",
-  "black"
+  "black",
+  "brown"
 ];
 
 //  Color
