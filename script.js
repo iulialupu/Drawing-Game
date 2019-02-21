@@ -42,3 +42,28 @@ function clearOneCell() {
 document
   .querySelector(".clear-btn")
   .addEventListener("click", () => clearOneCell());
+
+//  Resize Color grid
+handleRangeChange(30);
+document
+  .querySelector('input[type="range"]')
+  .addEventListener("change", e => handleRangeChange(Number(e.target.value)));
+function handleRangeChange(num) {
+  const numOfCells = num;
+  document.querySelector(".num-of-cells-label").innerHTML =
+    numOfCells + " x " + numOfCells;
+  const gridWidth = 400;
+  const cellWidth = Math.floor(gridWidth / numOfCells);
+  let renderCells = "";
+
+  for (let i = 0; i < numOfCells * numOfCells; i++) {
+    renderCells += `<div class="cell" style="width: ${cellWidth}px; height: ${cellWidth}px;"></div>`;
+  }
+  document.querySelector(".color-grid").innerHTML = renderCells;
+  document.querySelector(
+    ".color-grid"
+  ).style.gridTemplateRows = `repeat(${numOfCells}, 1fr)`;
+  document.querySelector(
+    ".color-grid"
+  ).style.gridTemplateColumns = `repeat(${numOfCells}, 1fr)`;
+}
