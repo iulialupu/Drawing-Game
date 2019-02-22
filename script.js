@@ -10,16 +10,40 @@ const colorClasses = [
 ];
 
 //  Color
+
 document
   .querySelector(".color-palette")
   .addEventListener("click", e => doColor(e.target.classList.value));
 
+const colorGrid = document.querySelector(".color-grid");
+doColor("red"); // default color
+
 function doColor(choosenColor) {
-  document.querySelector(".color-grid").addEventListener("click", e => {
+  // color on click
+  colorGrid.addEventListener("click", e => {
+    colorOneCell(e);
+  });
+  // color with drag and drop like aproach, with mousedown, mousemove and mouseup
+  colorGrid.addEventListener("mousedown", e => {
+    colorOneCell(e);
+    colorGrid.ondragstart = function() {
+      return false;
+    };
+
+    colorGrid.addEventListener("mousemove", mouseMovehandler);
+
+    document.addEventListener("mouseup", () => {
+      colorGrid.removeEventListener("mousemove", mouseMovehandler);
+    });
+  });
+
+  const mouseMovehandler = e => colorOneCell(e);
+
+  function colorOneCell(e) {
     e.target.classList.remove(...colorClasses);
     e.target.classList.add(choosenColor);
-  });
-  console.log(choosenColor);
+    console.log(e.target);
+  }
 }
 
 //  Clear All Grid
@@ -35,9 +59,25 @@ document
 
 //  Clear One Cell
 function clearOneCell() {
-  document.querySelector(".color-grid").addEventListener("click", e => {
-    e.target.classList.remove(...colorClasses);
+  colorGrid.addEventListener("click", e => {
+    clearCell(e);
   });
+  colorGrid.ondragstart = function() {
+    return false;
+  };
+  colorGrid.addEventListener("click", e => {
+    clearCell(e);
+  });
+  colorGrid.addEventListener("mousedown", e => {
+    clearCell(e);
+    colorGrid.addEventListener("mousemove", mouseMovehandler);
+    document.addEventListener("mouseup", () => {
+      console.log("mouseup");
+      colorGrid.removeEventListener("mousemove", mouseMovehandler);
+    });
+  });
+  const mouseMovehandler = e => clearCell(e);
+  const clearCell = e => e.target.classList.remove(...colorClasses);
 }
 document
   .querySelector(".clear-btn")
@@ -48,11 +88,11 @@ handleRangeChange(30);
 document
   .querySelector('input[type="range"]')
   .addEventListener("change", e => handleRangeChange(Number(e.target.value)));
-function handleRangeChange(num) {
-  const numOfCells = num;
+
+function handleRangeChange(numOfCells) {
   document.querySelector(".num-of-cells-label").innerHTML =
     numOfCells + " x " + numOfCells;
-  const gridWidth = 400;
+  const gridWidth = 400; //  possibly change in future
   const cellWidth = Math.floor(gridWidth / numOfCells);
   let renderCells = "";
 
@@ -60,6 +100,7 @@ function handleRangeChange(num) {
     renderCells += `<div class="cell" style="width: ${cellWidth}px; height: ${cellWidth}px;"></div>`;
   }
   document.querySelector(".color-grid").innerHTML = renderCells;
+
   document.querySelector(
     ".color-grid"
   ).style.gridTemplateRows = `repeat(${numOfCells}, 1fr)`;
