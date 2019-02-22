@@ -16,7 +16,7 @@ document
   .addEventListener("click", e => draw(e.target.classList.value));
 
 const colorGrid = document.querySelector(".color-grid");
-doColor("red"); // default color
+draw("red"); // default color
 
 function draw(choosenColor) {
   // color on click
