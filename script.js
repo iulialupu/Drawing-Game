@@ -13,12 +13,12 @@ const colorClasses = [
 
 document
   .querySelector(".color-palette")
-  .addEventListener("click", e => doColor(e.target.classList.value));
+  .addEventListener("click", e => draw(e.target.classList.value));
 
 const colorGrid = document.querySelector(".color-grid");
 doColor("red"); // default color
 
-function doColor(choosenColor) {
+function draw(choosenColor) {
   // color on click
   colorGrid.addEventListener("click", e => {
     colorOneCell(e);

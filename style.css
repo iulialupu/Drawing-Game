@@ -246,3 +246,33 @@ body {
     padding-bottom: 20px;
   }
 }
+
+/* Contacts */
+
+.contacts {
+  display: flex;
+  list-style-type: none;
+  padding-top: 18px;
+}
+.contacts > li > a {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.contacts i {
+  font-size: 14px;
+  color: rgba(83, 83, 83, 0.644);
+}
+i.codesandbox {
+  background: url(./favicon-codesandbox.ico);
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
